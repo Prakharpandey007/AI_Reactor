@@ -8,7 +8,7 @@ const dotenv=require('dotenv');
 const connectDB=require('./config/db')
 //routes path 
 const authRoutes=require('./routes/authRoutes');
-
+const errorHandler=require('./middlewares/errorMidllewares')
 
 //dotenv
 dotenv.config()
@@ -21,6 +21,7 @@ app.use(express.json());  //it will transfer the json data
 app.use(bodyparser.urlencoded({extended:false}));
 //morgan for http login tool
 app.use(morgan('dev'));
+app.use(errorHandler);
 
 
 //listen server
