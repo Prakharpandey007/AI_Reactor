@@ -6,6 +6,10 @@ const bodyparser=require('body-parser');
 const app=express();
 const dotenv=require('dotenv');
 const connectDB=require('./config/db')
+//routes path 
+const authRoutes=require('./routes/authRoutes');
+
+
 //dotenv
 dotenv.config()
 //connection of mongodb
@@ -21,7 +25,8 @@ app.use(morgan('dev'));
 
 //listen server
 const PORT=process.env.PORT||3001;
-
+//api routes
+app.use('/api/v1/auth',authRoutes);
 app.listen(PORT,()=>{
     console.log(`server started at ${PORT}`)
 })
