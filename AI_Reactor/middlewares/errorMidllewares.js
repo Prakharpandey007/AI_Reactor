@@ -29,4 +29,4 @@ if(err.name==="ValidationError"){
 
 
 } 
-modile.exports=errorHandler;
+module.exports=errorHandler;
