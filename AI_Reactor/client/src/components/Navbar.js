@@ -7,7 +7,9 @@ import toast from "react-hot-toast";
 const Navbar = () => {
   const navigate = useNavigate();
   //convert authtoken into json
-  const loggedIn = JSON.parse(localStorage.getItem("authToken"));
+  localStorage.setItem("authToken", JSON.stringify(true));
+  const loggedIn = localStorage.getItem("authToken") === "true";
+  // const loggedIn = JSON.parse(localStorage.getItem("authToken"));
 
   // Handle logout
   const handleLogout = async () => {
@@ -22,8 +24,8 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full bg-gray-400 p-4 shadow-md mb-4 text-center">
-      <h1 className="text-primary font-bold text-3xl">AI-Reactor</h1>
+    <div className="w-full bg-gray-400 p-2 shadow-md  text-center">
+      <h1 className="text-primary font-bold text-2xl">AI-Reactor</h1>
       {/* //if logged in then Go to home and logout option otherwise not logged in go to signup and signin */}
       {loggedIn ? (
         <div className="space-x-4">
