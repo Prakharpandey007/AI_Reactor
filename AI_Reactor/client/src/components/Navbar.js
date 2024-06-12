@@ -1,15 +1,16 @@
+
+
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { assets } from '../assets/assets.js';
 
 const Navbar = () => {
   const navigate = useNavigate();
-  //convert authtoken into json
-  localStorage.setItem("authToken", JSON.stringify(true));
-  const loggedIn = localStorage.getItem("authToken") === "true";
-  // const loggedIn = JSON.parse(localStorage.getItem("authToken"));
+  // Assume authToken is a boolean for simplicity
+  const loggedIn = JSON.parse(localStorage.getItem("authToken"));
 
   // Handle logout
   const handleLogout = async () => {
@@ -24,28 +25,32 @@ const Navbar = () => {
   };
 
   return (
-    <div className="w-full bg-gray-400 p-2 shadow-md  text-center">
-      <h1 className="text-primary font-bold text-2xl">AI-Reactor</h1>
-      {/* //if logged in then Go to home and logout option otherwise not logged in go to signup and signin */}
-      {loggedIn ? (
-        <div className="space-x-4">
-          <NavLink to="/" className="p-1 text-blue-600">
-            Home
-          </NavLink>
-          <NavLink to="/login" onClick={handleLogout} className="p-1 text-blue-600">
-            Logout
-          </NavLink>
-        </div>
-      ) : (
-        <div className="space-x-4">
-          <NavLink to="/register" className="p-1 text-blue-600">
-            Sign Up
-          </NavLink>
-          <NavLink to="/login" className="p-1 text-blue-600">
-            Sign In
-          </NavLink>
-        </div>
-      )}
+    <div className="w-full bg-red-200 p-2 shadow-md flex items-center justify-between ">
+      <h1 className="bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent font-3xl ">AI-Reactor</h1>
+      <div className="flex items-center space-x-4">
+        {/* Navigation Links */}
+        {loggedIn ? (
+          <>
+            <NavLink to="/" className="p-1 text-blue-600">
+              Home
+            </NavLink>
+            <NavLink to="/login" onClick={handleLogout} className="p-1 text-blue-600">
+              Logout
+            </NavLink>
+            {/* User Icon */}
+            <img src={assets.user_icon} alt="User Icon" className="w-10 h-10 rounded-full" />
+          </>
+        ) : (
+          <>
+            <NavLink to="/register" className="p-1 text-blue-600">
+              Sign Up
+            </NavLink>
+            <NavLink to="/login" className="p-1 text-blue-600">
+              Sign In
+            </NavLink>
+          </>
+        )}
+      </div>
     </div>
   );
 };

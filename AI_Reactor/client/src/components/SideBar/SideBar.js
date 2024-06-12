@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { assets } from '../../assets/assets.js';
+import { Context } from '../../context/context.js';
 
 const SideBar = () => {
   const [extended, setExtended] = useState(false);
+  const{onSent,prevPrompts,setRecentPrompt}=useContext(Context)
+
 
   return (
     <div className="min-h-screen flex flex-col justify-between bg-gray-100 p-6">
@@ -20,11 +23,19 @@ const SideBar = () => {
         {extended && (
           <div>
             <p className="text-gray-600 mb-4">Recent</p>
-            <div className="flex items-center gap-2 p-3 bg-gray-200 rounded-full cursor-pointer mb-4">
-              <img src={assets.message_icon} alt="Message Icon" className="w-5" />
-              <p className="text-gray-600">What is react</p>
-            </div>
+            {prevPrompts.map((item,index)=>{
+              return (
+                <div className="flex items-center gap-2 p-3 bg-gray-200 rounded-full cursor-pointer mb-4">
+                <img src={assets.message_icon} alt="Message Icon" className="w-5" />
+                <p className="text-gray-600">{item.slice(0,18)}</p>
+              </div>
+
+              )
+
+            })}
+           
           </div>
+          
         )}
       </div>
       <div>
