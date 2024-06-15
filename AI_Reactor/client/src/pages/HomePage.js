@@ -1,11 +1,15 @@
 
-import React, { useContext } from 'react';
+import React, { useContext,useEffect} from 'react';
 import Sidebar from '../components/SideBar/SideBar.js';
 import { assets } from '../assets/assets.js';
 import { Context } from '../context/context.js';
-
+import { useNavigate} from 'react-router-dom';
 const HomePage = () => {
+ 
+  
+  // Retrieve and parse authToken from localStorage safely
   const isLoggedIn = JSON.parse(localStorage.getItem('authToken'));
+  const navigate = useNavigate();
   
   // Destructuring context values
   const {
@@ -28,6 +32,16 @@ const HomePage = () => {
     setInput,
     input
   });
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate('/login');
+    }
+  }, [isLoggedIn, navigate]);
+
+  if (!isLoggedIn) {
+    return null; // Or you can render a loading spinner or message here
+  }
+
 
   return (
     <div className="flex">
@@ -39,7 +53,7 @@ const HomePage = () => {
           <div className="my-12 text-5xl text-gray-400 font-medium px-5">
             {!showResult ? (
               <>
-                <p><span className="bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent">Hello, Dev</span></p>
+                <p><span className="bg-gradient-to-r from-blue-400 to-red-400 bg-clip-text text-transparent">Hello,dev</span></p>
                 <p>How can I help you today?</p>
               </>
             ) : (
@@ -110,5 +124,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-

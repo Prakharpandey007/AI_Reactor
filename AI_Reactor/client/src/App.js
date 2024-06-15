@@ -6,6 +6,7 @@ import Login from './pages/Login'
 import {Toaster} from 'react-hot-toast';
 // react-hot-toast for push notification 
 function App() {
+  
   return (
     <>
    
@@ -27,3 +28,4 @@ function App() {
 }
 
 export default App;
+

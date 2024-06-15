@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 
 const Login = () => {
+  
   const navigate = useNavigate();
   // states
   const [email, setEmail] = useState("");
@@ -14,11 +15,14 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("/api/v1/auth/login", { email, password });
+      // await axios.post("/api/v1/auth/login", { email, password });
+      const { data } = await axios.post("/api/v1/auth/login", { email, password });
+      
       //toast for popup 
       toast.success("Login Successfully");
       //save token into local storage
-      localStorage.setItem("authToken", true);
+      localStorage.setItem("authToken", JSON.stringify(data.token));
+     
       navigate("/");
     } catch (err) {
       console.log(err);
