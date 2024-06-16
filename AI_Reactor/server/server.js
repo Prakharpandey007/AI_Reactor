@@ -7,8 +7,8 @@ const app=express();
 const dotenv=require('dotenv');
 const connectDB=require('./config/db')
 //routes path 
-const authRoutes=require('./routes/authRoutes');
-const errorHandler=require('./middlewares/errorMidllewares')
+const authRoutes=require('../server/routes/authRoutes');
+const errorHandler=require('../server/middlewares/errorMidllewares')
 
 //dotenv
 dotenv.config()
