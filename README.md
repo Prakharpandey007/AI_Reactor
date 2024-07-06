@@ -36,7 +36,7 @@ Welcome to Github-Pro!
 - GitHub Pages: A platform for hosting and deploying web applications.
 
 ## Installation
-- CLone the repository:  git clone https://github.com/yourusername/AI-Reactor.git
+- Clone the repository:  git clone https://github.com/yourusername/AI-Reactor.git
 - Navigate to directory: cd AI-Reactor
 - 
 - Directory:cd server
@@ -54,8 +54,8 @@ GEMINI_API_KEY=your_gemini_api_key
 
 ```
 ## Usage
--Directory:cd server
--Run command:npm run dev 
+- Change Directory: cd server
+- Run command locally: npm run dev 
 
 ## Contributing
 - Contributions are welcome! If you'd like to contribute to My Project, please follow these steps:
