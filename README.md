@@ -38,7 +38,7 @@ Welcome to Github-Pro!
 ## Installation
 - Clone the repository:  git clone https://github.com/yourusername/AI-Reactor.git
 - Navigate to directory: cd AI-Reactor
-- 
+
 - Directory:cd server
 - Install Dependencies for Backend :  npm install
 - Directory: cd ../client
